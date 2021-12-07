@@ -1,4 +1,4 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 
 interface CounterResponse {
   counter: number
@@ -18,14 +18,22 @@ export class AppController {
   }
 
   @Post("/inc")
-  increment(): CounterResponse {
-    this.counter += 1;
+  increment(@Body() body): CounterResponse {
+    if (body) {
+      this.counter += body.amount
+    } else {
+      this.counter += 1;
+    }
     return this.getCounter()
   }
 
   @Post("/dec")
-  decrement(): CounterResponse {
-    this.counter -= 1;
+  decrement(@Body() body): CounterResponse {
+    if (body) {
+      this.counter += body.amount
+    } else {
+      this.counter += 1;
+    }
     return this.getCounter()
   }
 }
