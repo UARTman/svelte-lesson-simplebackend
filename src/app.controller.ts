@@ -18,9 +18,9 @@ export class AppController {
   }
 
   @Post("/inc")
-  increment(@Body() body): CounterResponse {
-    if (body) {
-      this.counter += body.amount
+  increment(@Body("amount") amount): CounterResponse {
+    if (amount != undefined) {
+      this.counter += amount
     } else {
       this.counter += 1;
     }
@@ -28,9 +28,9 @@ export class AppController {
   }
 
   @Post("/dec")
-  decrement(@Body() body): CounterResponse {
-    if (body) {
-      this.counter += body.amount
+  decrement(@Body("amount") amount): CounterResponse {
+    if (amount) {
+      this.counter += amount
     } else {
       this.counter += 1;
     }
