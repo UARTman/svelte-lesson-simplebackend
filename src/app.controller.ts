@@ -30,9 +30,9 @@ export class AppController {
   @Post("/dec")
   decrement(@Body("amount") amount): CounterResponse {
     if (amount) {
-      this.counter += amount
+      this.counter -= amount
     } else {
-      this.counter += 1;
+      this.counter -= 1;
     }
     return this.getCounter()
   }
